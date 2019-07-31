@@ -7,8 +7,8 @@
 const DaoLayoutHorizontal_tmpl1  = data =>
     `
         <div class="dao-layer-horizontal">
-            <div class = "dao-layer-vertical-head"> ${data.left}</div>
-            <div class = "dao-layer-vertical-bottom"> ${data.right} </div>
+            <div class = "left"> ${data.left}</div>
+            <div class = "right"> ${data.right} </div>
         </div>
     `;
 class DaoLayoutHorizontal extends HTMLElement{
