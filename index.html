@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DaoUI</title>
+    <link rel="stylesheet" href="src/css/DaoUI.css">
+</head>
+<body>
+    <!--<dao-header rows="1">由于自定义元素是通过脚本执行 document.registerElement() 注册的，因此 它们可能在元素定义被注册到浏览器之前就已经声明或创建过了。例如：你可以先在页面中声明，以后再调用 document.registerElement('x-tabs')。 在被提升到其定义之前，这些元素被称为 unresolved 元素。它们是拥有合法自定义元素名的 HTML 元素，只是还没有注册成为自定义元素。 下面这个表格看起来更直观一些</dao-header>
+
+-->
+    <!-- 上下布局-->
+    <dao-layout-vertical head="test1" bottom = "test2"></dao-layout-vertical>
+
+    <div id = "test1" style="display: none">
+        <section>
+            <h1>test1</h1>
+        </section>
+    </div>
+
+    <!-- 左右布局-->
+    <div id = "test2" style="display: none">
+        <section>
+            <dao-layout-horizontal left="testleft" right="testright"></dao-layout-horizontal>
+        </section>
+    </div>
+
+    <div id="testleft">
+        <section>
+            <h1>left</h1>
+        </section>
+    </div>
+    <div id="testright">
+        <section>
+            <h1>right</h1>
+        </section>
+    </div>
+
+
+    <!-- T字布局-->
+
+    <!-- C字布局-->
+
+    <!-- 口字布局-->
+</body>
+</html>
+<script src="src/js/DaoUI.js"></script>
