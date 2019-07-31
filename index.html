@@ -12,23 +12,24 @@
 
     <div id = "test1" style="display: none">
         <section>
-            <h1>test1</h1>
+            <h1>上下布局——header</h1>
         </section>
     </div>
 
     <!-- 左右布局-->
     <div id = "test2" style="display: none">
         <section>
+            <h1>上下布局——bottom</h1>
             <dao-layout-horizontal left="testleft" right="testright"></dao-layout-horizontal>
         </section>
     </div>
 
-    <div id="testleft">
+    <div id="testleft" class="dao-hidden">
         <section>
             <h1>left</h1>
         </section>
     </div>
-    <div id="testright">
+    <div id="testright" class="dao-hidden">
         <section>
             <h1>right</h1>
         </section>
