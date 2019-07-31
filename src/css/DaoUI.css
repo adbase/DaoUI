@@ -1,0 +1,92 @@
+/**
+    @layui: DaoUI.css
+    @Auther: daniel zhao
+    @site:
+ */
+
+/** 初始化 **/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form,pre{margin: 0; padding: 0; -webkit-tap-highlight-color:rgba(0,0,0,0);}
+a:active,a:hover{outline:0}
+img{display: inline-block; border: none; vertical-align: middle;}
+li{list-style:none;}
+table{border-collapse: collapse; border-spacing: 0;}
+
+/** 初始化全局标签 **/
+
+/* 背景颜色 */
+.dao-background-white{
+    background-color: #ffffff;
+}
+.dao-background-gray {
+    background-color: #f5f5f5;
+}
+.dao-background-blue{
+    background-color: #eceef2;
+}
+.dao-background-light{
+    background-color: #fff9ed;
+}
+
+.dao-background-dark-deep{
+    background: #1E262D;
+}
+
+.dao-background-dark-light{
+    background-color: #3B4248;
+}
+
+/**
+    布局
+**/
+
+/* 上下布局 */
+.dao-layer-vertical{
+    height: 100%;
+    margin: 0 auto;
+    min-width: 752px;
+    padding: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.dao-layer-vertical .head{
+    padding-top: 10px;
+    height: 60px;
+    z-index: 2;
+}
+
+.dao-layer-vertical .head-shadow{
+    box-sizing: content-box;
+    border-bottom: 1px solid #d1dbe8;
+    box-shadow: 0 0 2px rgba(0,0,0,.12);
+}
+
+.dao-layer-vertical .bottom{
+    position: relative;
+    width: 100%;
+    z-index: -1;
+}
+/** 左右布局 **/
+.dao-layer-horizontal{
+    height: 100%;
+    margin: 0 auto;
+    min-width: 752px;
+    padding: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.dao-layer-horizontal .left{
+    margin: 0 auto;
+    position:relative;
+}
+
+.dao-layer-horizontal .right{
+    margin: 0 auto;
+    position:relative;
+
+}
+
+/** T字布局 **/
+/** C字布局 **/
+/** 口字布局 **/
