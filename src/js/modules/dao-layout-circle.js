@@ -33,8 +33,8 @@ class DaoLayoutCircle extends HTMLElement{
     }
 
     _getHTML(page){
-        let regex_id = '^#[\\w]*';
-        let regex_class = '^.[\\w-_]*';
+        let regex_id = new RegExp('^#[\\w]*');
+        let regex_class = new RegExp('^.[\\w-_]*');
         let regex_html = new RegExp('^\\/([\\s\\S]*\\/)*\\w+\\.html$');
         //console.log(regex_html.test(page));
         if(regex_id.test(page)){
