@@ -51,7 +51,8 @@
     let daoheader = path + modulefolder+'/dao-header.js'
         ,daolayer = path + modulefolder +'/dao-layer.js'
         ,daolayoutvertical = path + modulefolder +'/dao-layout-vertical.js'
-        ,daolayouthorizontal = path + modulefolder +'/dao-layout-horizontal.js';
+        ,daolayouthorizontal = path + modulefolder +'/dao-layout-horizontal.js'
+        ,daolayoutcircle = path + modulefolder +'/dao-layout-circle.js';
 
     getJS(daoheader).then(function(msg){
         return getJS(daolayer);
@@ -59,5 +60,7 @@
         return getJS(daolayoutvertical);
     }).then(function(msg){
         return getJS(daolayouthorizontal);
+    }).then(function(msg){
+        return getJS(daolayoutcircle);
     });
 }(window);
