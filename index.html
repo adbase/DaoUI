@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-    <!-- 上下布局-->
+    <!-- T布局
     <dao-layout-vertical head="test1" bottom = "test2"></dao-layout-vertical>
 
     <div id = "test1" style="display: none">
@@ -15,8 +15,6 @@
             <h1>上下布局——header</h1>
         </section>
     </div>
-
-    <!-- 左右布局-->
     <div id = "test2" style="display: none">
         <section>
             <h1>上下布局——bottom</h1>
@@ -33,14 +31,25 @@
         <section>
             <h1>right</h1>
         </section>
-    </div>
-
-
-    <!-- T字布局-->
-
-    <!-- C字布局-->
-
+    </div>-->
     <!-- 口字布局-->
+
+    <dao-layout-circle header="testHeader" footer="testFooter" left="testLeft" right="testRight" main="testMain"></dao-layout-circle>
+
+
+    <!--<div id="testFooter" class="dao-hidden">
+        footer
+    </div>-->
+    <template id="testLeft">
+        <div>left</div>
+    </template>
+    <template id="testRight">
+        <div>right</div>
+    </template>
+    <template id="testMain">
+        <div>main</div>
+    </template>
 </body>
 </html>
 <script src="src/js/DaoUI.js"></script>
+<script src="src/index.js"></script>
