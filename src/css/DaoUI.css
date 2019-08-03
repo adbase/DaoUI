@@ -32,14 +32,15 @@ table{border-collapse: collapse; border-spacing: 0;}
 .dao-background-blue{
     background-color: #eceef2;
 }
-.dao-background-light{
+.dao-background-red-light{
     background-color: #fff9ed;
 }
-
+.dao-background-orange{
+    background-color:  #ff6a00;
+}
 .dao-background-dark-deep{
     background: #1E262D;
 }
-
 .dao-background-dark-light{
     background-color: #3B4248;
 }
@@ -47,8 +48,6 @@ table{border-collapse: collapse; border-spacing: 0;}
 /**
     布局
 **/
-
-
 /* 上下布局 */
 .dao-layer-vertical{
     height: 100%;
@@ -102,6 +101,7 @@ table{border-collapse: collapse; border-spacing: 0;}
 
 }
 
-/** T字布局 **/
-/** C字布局 **/
 /** 口字布局 **/
+.dao-layer-circle{
+
+}

@@ -27,27 +27,23 @@ class DaoLayoutCircle extends HTMLElement{
         this._right = this.getAttribute('right');
         this._main = this.getAttribute('main');
 
+        //util
+        this.util = new Util();
         //render
         this._render();
-        this._getHTML('/resources/css/mei.html')
+
     }
 
-    _getHTML(page){
-        let regex_id = new RegExp('^#[\\w]*');
-        let regex_class = new RegExp('^.[\\w-_]*');
-        let regex_html = new RegExp('^\\/([\\s\\S]*\\/)*\\w+\\.html$');
-        //console.log(regex_html.test(page));
-        if(regex_id.test(page)){
-               
-        }
-    }
+
     _render(){
         let data = {};
-        let headerHTML = ( document.getElementById(this._header) != null ) ? document.getElementById(this._header).innerHTML : `<div class="dao-hidden"></div>`;
-        let footerHTML = ( document.getElementById(this._footer) != null ) ? document.getElementById(this._footer).innerHTML : `<div class="dao-hidden"></div>`;
-        let leftHTML   = ( document.getElementById(this._left) != null ) ? document.getElementById(this._left).innerHTML : `<div class="dao-hidden"></div>`;
-        let rightHTML  = ( document.getElementById(this._right) != null ) ? document.getElementById(this._right).innerHTML : `<div class="dao-hidden"></div>`;
-        let mainHTML   = ( document.getElementById(this._main) != null ) ? document.getElementById(this._main).innerHTML : `<div class="dao-hidden"></div>`;
+
+        let headerHTML = this.util.template(this._header);
+        //console.log("test : "+headerHTML);
+        let footerHTML = this.util.template(this._footer);
+        let leftHTML   = this.util.template(this._left);
+        let rightHTML  = this.util.template(this._right);
+        let mainHTML   = this.util.template(this._main);
 
         data.header = headerHTML;
         data.footer = footerHTML;
