@@ -8,9 +8,11 @@ const DaoLayoutCircleTmpl = data =>
     `
         <div class="dao-layer-circle">
             <div class="header">${data.header}</div>
-            <div class="left">${data.left}</div>
-            <div class="main">${data.main}</div>
-            <div class="right">${data.right}</div>
+            <div class="screen">
+                <div class="left">${data.left}</div>
+                <div class="main">${data.main}</div>
+                <div class="right">${data.right}</div>
+            </div>
             <div class="footer">${data.footer}</div>
         </div>
     `;
@@ -20,7 +22,6 @@ class DaoLayoutCircle extends HTMLElement{
     constructor(){
         super();
 
-        //get attribute
         this._header = this.getAttribute('header');
         this._footer = this.getAttribute('footer');
         this._left = this.getAttribute('left');
@@ -39,7 +40,6 @@ class DaoLayoutCircle extends HTMLElement{
         let data = {};
 
         let headerHTML = this.util.template(this._header);
-        //console.log("test : "+headerHTML);
         let footerHTML = this.util.template(this._footer);
         let leftHTML   = this.util.template(this._left);
         let rightHTML  = this.util.template(this._right);

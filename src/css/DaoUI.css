@@ -22,6 +22,37 @@ table{border-collapse: collapse; border-spacing: 0;}
     display: block;
 }
 
+
+/* Grid */
+.grid-container{
+    width: 100%;
+}
+.row{
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    flex-wrap: wrap;
+}
+/*
+@media (max-width: 767px) { ... }
+
+@media (min-width: 768px) { ... }
+
+@media (min-width: 992px) { ... }
+
+@media (min-width: 1200px) { ... }*/
+.col-1 { flex: 0 0 8.333333%; }
+.col-2 { flex: 0 0 16.666667%; }
+.col-3 { flex: 0 0 25%; }
+.col-4 { flex: 0 0 33.333333%; }
+.col-5 { flex: 0 0 41.666667%; }
+.col-6 { flex: 0 0 50%; }
+.col-7 { flex: 0 0 58.333333%; }
+.col-8 { flex: 0 0 66.666667%; }
+.col-9 { flex: 0 0 75%; }
+.col-10 { flex: 0 0 83.333333%; }
+.col-11 { flex: 0 0 91.666667%; }
+.col-12 { flex: 0 0 100%; }
+
 /* 背景颜色 */
 .dao-background-white{
     background-color: #ffffff;
@@ -104,4 +135,31 @@ table{border-collapse: collapse; border-spacing: 0;}
 /** 口字布局 **/
 .dao-layer-circle{
 
+}
+.dao-layer-circle .header{
+    position: relative;
+    width: 100%;
+}
+.dao-layer-circle .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.dao-layer-circle .screen{
+    align-items:center;
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    flex-direction:row;
+    height: 100%;
+    justify-content:space-between;
+    margin: 0 auto;
+    min-width: 752px;
+    padding: 0;
+    width: 100%;
+    z-index: 0;
+}
+.dao-layer-circle .screen .main{
+    margin: 0 auto;
+    position:relative;
 }

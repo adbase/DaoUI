@@ -47,62 +47,37 @@ class Util {
 
         });
     };
-    ajaxObject() {
-        let xmlHttp;
-        try {
-            // Firefox, Opera 8.0+, Safari
-            xmlHttp = new XMLHttpRequest();
-        }
-        catch (e) {
-            // Internet Explorer
-            try {
-                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
-            } catch (e) {
-                try {
-                    xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-                } catch (e) {
-                    alert("您的浏览器不支持AJAX！");
-                    return false;
-                }
-            }
-        }
-        return xmlHttp;
+
+    ajaxGet (url) {
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp .open( "GET" , url, false);
+        xmlhttp .send();
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            return xmlhttp.responseText;
+        }else
+            return null;
     }
-    ajaxGet ( url , data , fnSucceed , fnFail , fnLoading ) {
-        let ajax = ajaxObject();
-        ajax.open( "post" , url , true );
-        ajax.setRequestHeader( "Content-Type" , "application/x-www-form-urlencoded" );
-        ajax.onreadystatechange = function () {
-            if( ajax.readyState == 4 ) {
-                if( ajax.status == 200 ) {
-                    fnSucceed( ajax.responseText );
-                }
-                else {
-                    fnFail( "HTTP请求错误！错误码："+ajax.status );
-                }
-            }
-            else {
-                fnLoading();
-            }
-        }
-        ajax.send( data );
-    }
+
     template(page){
         let regex_id = new RegExp('^#[\\w]*');
         let regex_class = new RegExp('^\\.[\\w-_]*');
         let regex_html = new RegExp('^\\/([\\s\\S]*\\/)*[\\w-_]+\\.html$');
-        //console.log(regex_html.test(page));
 
-        if(regex_id.test(page)){return  ( document.getElementById(page) != null ) ? document.getElementById(page).innerHTML : `<div class="dao-hidden"></div>`;}
+        if(regex_id.test(page)){
+            page = page.substring(1, page.length);
+            return  ( document.getElementById(page) != null ) ? document.getElementById(page).innerHTML : `<div class="dao-hidden"></div>`;
+        }
 
-        if(regex_class.test(page)){return  ( document.getElementsByClassName(page) != null ) ? document.getElementsByClassName(page).innerHTML : `<div class="dao-hidden"></div>`;}
+        if(regex_class.test(page)){
+            page = page.substring(1, page.length);
+            return  ( document.getElementsByClassName(page) != null ) ? document.getElementsByClassName(page)[0].innerHTML : `<div class="dao-hidden"></div>`;
+        }
 
         if(regex_html.test(page)){
-            let html = this.ajax_get(page);
-            console.log("html:" + html);
+            let html = this.ajaxGet(page);
             return html != null ? html : `<div class="dao-hidden"></div>`;
         }
-    };
+    }
 
 }
 
