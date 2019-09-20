@@ -90,7 +90,11 @@ class Util {
         ,daolayer = path + modulefolder +'/dao-layer.js'
         ,daolayoutvertical = path + modulefolder +'/dao-layout-vertical.js'
         ,daolayouthorizontal = path + modulefolder +'/dao-layout-horizontal.js'
-        ,daolayoutcircle = path + modulefolder +'/dao-layout-circle.js';
+        ,daolayoutcircle = path + modulefolder +'/dao-layout-circle.js'
+        ,daoLargeButton = path + modulefolder +'/Button/dao-button-large.js'
+        ,daoInput = path + modulefolder +'/input/dao-input.js'
+        ,daoSelect = path + modulefolder +'/select/dao-select.js'
+        ,daoPanel = path + modulefolder +'/panel/dao-panel.js';
 
     util.getJS(daoheader).then(function(msg){
         return util.getJS(daolayer);
@@ -100,6 +104,14 @@ class Util {
         return util.getJS(daolayouthorizontal);
     }).then(function(msg){
         return util.getJS(daolayoutcircle);
+    }).then(function(msg){
+        return util.getJS(daoLargeButton);
+    }).then(function(msg){
+        return util.getJS(daoInput);
+    }).then(function(msg){
+        return util.getJS(daoSelect);
+    }).then(function(msg){
+        return util.getJS(daoPanel);
     });
 }(window);
 
