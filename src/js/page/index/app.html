@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="../../../css/app.css">
+    <link rel="stylesheet" href="/DaoUI/src/css/DaoUI.css">
+    <title>Title</title>
+</head>
+<body>
+<!--后台布局 -->
+<!--<div class="dao-layout-admin">
+    &lt;!&ndash;header&ndash;&gt;
+    <div class="dao-header dao-background-gray">
+        <div class="dao-logo">GenieSeller</div>
+    </div>
+    <div class="dao-nav-side dao-side ">
+        <div class="dao-side-scroll">
+            <ul class="dao-nav dao-nav-tree">
+                <li class="dao-nav-item">
+                    <a class="" href="#/home">首页</a>
+                </li>
+                <li class="dao-nav-item">
+                    <a class="" href="#/list">商品列表</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dao-body mb-md-4">
+        <div id="routerView1" data-animationName="slide">
+            <div class="page" data-hash="/home">
+                <div id="home"></div>
+            </div>
+            <div class="page" data-hash="/list">
+                <div id="list"></div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div id="routerView" data-animationName="slide">
+    <div class="page" data-hash="/home">
+        <div class="page-content">
+            <div id="home"><div>
+                <a class='back' onclick='window.history.go(-1)'>返回</a></div> <h2>首页</h2> <input type='text'> <div><div href='javascript:void(0);' onclick='linkTo("#/list")'>列表</div></div><div class='height'>内容占位</div></div>
+
+        </div>
+    </div>
+    <div class="page" data-hash="/list">
+        <div class="page-content">
+            <div id="list">
+                <div>
+                    <a class='back' onclick='window.history.go(-1)'>返回</a>
+                </div>
+                <h2>列表</h2>
+                <input type='text'>
+                    <div>
+                        <a href='javascript:void(0);' onclick='linkTo("#/detail")'>详情</a>
+                    </div>
+            </div>
+            <div style="height: 700px;border: solid 1px red;background-color: #eee;margin-top: 20px;">内容占位</div>
+
+        </div>
+    </div>
+    <div class="page" data-hash="/detail">
+        <div class="page-content">
+            <div id="detail"></div>
+
+        </div>
+    </div>
+    <div class="page" data-hash="/detail2">
+        <div class="page-content">
+            <div id="detail2"></div>
+            <div style="height: 700px;border: solid 1px red;background-color: pink;margin-top: 20px;">内容占位</div>
+
+        </div>
+    </div>-->
+<script type="text/javascript" src="../../router/route.js"></script>
+<script type="text/javascript">
+    function process(url){
+        let xmlhttp = new XMLHttpRequest();
+        xmlhttp .open( "GET" , url, false);
+        xmlhttp .send();
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            return xmlhttp.responseText;
+        }else
+            return null;
+    }
+    var config = {
+        routerViewId: 'routerView1', // 路由切换的挂载点 id
+        stackPages: true, // 多级页面缓存
+        animationName: "slide", // 切换页面时的动画
+        routes: [{
+            path: "/home",
+            name: "home",
+            callback: function(route) {
+                let str = process("/DaoUI/src/page/index/router1.html");
+                //console.log("test:" + _html);
+                document.querySelector("#home").innerHTML = str;
+            }
+        }, {
+            path: "/list",
+            name: "list",
+            callback: function(route) {
+
+                let str = process("/DaoUI/src/page/index/router2.html");
+                document.querySelector("#list").innerHTML = str
+            }
+        }]
+    };
+
+    //初始化路由
+    router.init(config);
+    router.beforeEach(function(transition) {
+        //console.log('切换之 前 dosomething', transition);
+        transition.next();
+    });
+    router.afterEach(function(transition) {
+        //console.log("切换之 后 dosomething", transition)
+    })
+</script>
+</body>
+</html>
+<script src="/DaoUI/src/js/cache/ChasePayCache.js"></script>
+<script src="/DaoUI/src/js/dataservice/ChasePayDataConstants.js"></script>
+<script src="/DaoUI/src/js/dataservice/ChasePayNavDataService.js"></script>
+<script src="/DaoUI/src/js/dataservice/ChasePayDataService.js"></script>
+
+<script src="/DaoUI/src/js/DaoUI.js"></script>
+<script src="/DaoUI/src/js/router/route.js"></script>
+<script type="module" src="/DaoUI/src/page/index/app2.js"></script>
