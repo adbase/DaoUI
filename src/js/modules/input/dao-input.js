@@ -14,7 +14,7 @@ const DaoInputImpl = data => `
         </p>
     </div>
     <div class="col-sm-8 col-xl-9 col-tv-10">
-        <input class="dao-input" size="10" style="width : ${data.width}"/>
+        <input class="dao-input" placeholder = "${data.placeholder}" size="10" style="width : ${data.width}"/>
     </div>
 </div>
 `;
@@ -25,6 +25,7 @@ class DaoInput extends HTMLElement{
         this._title = this.getAttribute('title');
         this._subTitle = this.getAttribute('subTitle');
         this._width = this.getAttribute('width');
+        this._placeholder = this.getAttribute('placeholder');
         this._render();
     }
 
@@ -33,6 +34,7 @@ class DaoInput extends HTMLElement{
         data.title = this._title;
         data.subTitle = this._subTitle;
         data.width = this._width;
+        data.placeholder = this._placeholder;
         this.innerHTML = DaoInputImpl(data);
     }
 }

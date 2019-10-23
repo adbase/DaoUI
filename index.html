@@ -16,25 +16,10 @@
 <!--后台布局 -->
 <div class="dao-layout-admin">
     <!--header-->
-    <div class="dao-header">
+    <div class="dao-header dao-background-gray">
         <!--logo-->
         <div class="dao-logo">GenieSeller</div>
-
-        <ul class="dao-nav dao-layout-left  dao-background-white dao-width-full bb-sm-1">
-            <li class="dao-nav-item"><a href="">控制台</a></li>
-            <li class="dao-nav-item"><a href="">商品管理</a></li>
-            <li class="dao-nav-item"><a href="">用户</a></li>
-            <li class="dao-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="dao-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>
-
-        </ul>
-        <ul class="dao-nav dao-layout-right  dao-background-white">
+        <ul class="dao-nav dao-layout-right">
             <li class="dao-nav-item">
                 <a href="javascript:;">
                     <i class="fas fa-user pr-lg-1"></i>
@@ -52,341 +37,20 @@
     </div>
 
     <!--sidebar-->
-    <div class="dao-nav-side dao-side dao-background-white dao-height-full">
-        <div class="dao-side-scroll">
-            <ul class="dao-nav dao-nav-tree"  lay-filter="test">
-                <li class="dao-nav-item dao-nav-itemed">
-                    <a class="" href="javascript:;">所有商品</a>
-                    <ul class="dao-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="javascript:;">列表三</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </ul>
-                </li>
-                <li class="dao-nav-item">
-                    <a href="javascript:;">解决方案</a>
-                    <dl class="dao-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
-                        <dd><a href="">超链接</a></dd>
-                    </dl>
-                </li>
-                <li class="dao-nav-item"><a href="">云市场</a></li>
-                <li class="dao-nav-item"><a href="">发布商品</a></li>
-            </ul>
-        </div>
+    <div class="dao-nav-side dao-side ">
+        <dao-nav id = "chasepay-sidebar" data='{"className":"ChasePayNavDataService","methodName":"getNavData","condtioMap":{"userId":"1"}}'></dao-nav>
     </div>
-    <!--main screen-->
-    <div class="dao-body dao-background-gray mb-md-4">
-        <dao-panel title = "Form Example" subtitle = "sub Title">
-            <div class="inputExample pt-lg-2">
-                <div class="pt-md-5">
-                    <dao-input title="Input title" subtitle = "sub title"></dao-input>
-                </div>
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Selector Example
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Selector Des Text
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
-                        <dao-select width = "50%" primary = "Primary Option" >
-                            <optgroup label="Primary color options">
-                                <option value="1213">Beige</option>
-                                <!--<option value="1">Black</option>
-                                <option value="2">Blue</option>
-                                <option value="1216">Bronze</option>
-                                <option value="3">Brown</option>
-                                <option value="1219">Clear</option>
-                                <option value="1218">Copper</option>
-                                <option value="1214">Gold</option>
-                                <option value="5">Gray</option>
-                                <option value="4">Green</option>-->
-                            </optgroup>
-                        </dao-select>
-                    </div>
-                </div>
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Input Group & Tag Example
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Input Group Des with tags
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
-                        <div class="dao-input-group">
-                            <div class="dao-input-group-body">
-                                <input class="dao-input" size="10" style="width: auto;"/>
-                            </div>
-                            <div class="dao-input-group-btn">
-                                <button type="button" class="dao-btn dao-btn-secondary dao-btn-append">Add</button>
-                            </div>
-                        </div>
-                        <div class="pt-md-2">
-                            <div class="dao-tag dao-tag-left"><div class="dao-tag-close">
-                                <button class="dao-btn dao-btn-secondary dao-btn-prepend" type="button" data-action="delete" data-id="acrylic" aria-label="Delete">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                                <div class="dao-tag-body">acrylic</div></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Button Group
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Button Group Des with tags
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
 
-                    </div>
-
-                </div>
-            </div>
-        </dao-panel>
-        <div class="dao-panel p-xs-4 pl-md-6 pt-md-5 pr-md-6 pb-md-4">
-            <!--from header-->
-            <header class="pt-xs-2 pb-xs-2 bb-xs-1 dao-background-white">
-                <h2>Form Example</h2>
-                <p class="dao-text-gray-light">sub header</p>
-            </header>
-
-            <div class="inputExample pt-lg-2">
-                <div class="pt-md-5">
-                    <dao-input title="Input title" subtitle = "sub title"></dao-input>
-                </div>
-
-
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Selector Example
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Selector Des Text
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
-                        <dao-select width = "50%" primary = "Primary Option" >
-                            <optgroup label="Primary color options">
-                                <option value="1213">Beige</option>
-                                <!--<option value="1">Black</option>
-                                <option value="2">Blue</option>
-                                <option value="1216">Bronze</option>
-                                <option value="3">Brown</option>
-                                <option value="1219">Clear</option>
-                                <option value="1218">Copper</option>
-                                <option value="1214">Gold</option>
-                                <option value="5">Gray</option>
-                                <option value="4">Green</option>-->
-                            </optgroup>
-                        </dao-select>
-                    </div>
-                </div>
-
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Input Group & Tag Example
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Input Group Des with tags
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
-                        <div class="dao-input-group">
-                            <div class="dao-input-group-body">
-                                <input class="dao-input" size="10" style="width: auto;"/>
-                            </div>
-                            <div class="dao-input-group-btn">
-                                <button type="button" class="dao-btn dao-btn-secondary dao-btn-append">Add</button>
-                            </div>
-                        </div>
-                        <div class="pt-md-2">
-                            <div class="dao-tag dao-tag-left"><div class="dao-tag-close">
-                                <button class="dao-btn dao-btn-secondary dao-btn-prepend" type="button" data-action="delete" data-id="acrylic" aria-label="Delete">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                             <div class="dao-tag-body">acrylic</div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row pt-md-5">
-                    <div class="col-sm-4 col-xl-3 col-tv-2">
-                        <label class="dao-text-strong">
-                            Button Group
-                        </label>
-                        <p class="dao-text-small dao-text-gray-light">
-                            Button Group Des with tags
-                        </p>
-                    </div>
-                    <div class="col-sm-8 col-xl-9 col-tv-10">
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="row pt-md-1">
-            <ul class="dao-cards dao-width-full">
-                <li class="dao-cards-item">
-                    <div class="dao-card">
-                        <div class="dao-card-content">
-                            <div class="dao-card-image">
-                                <div class="dao-card-image-default"></div>
-                            </div>
-                            <div class="dao-card-title">Card Title</div>
-                            <div class="dao-card-text">
-                                <div class="dao-card-text-item">
-                                    Card Text
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="dao-panel p-xs-4 pl-md-6 pt-md-5 pr-md-6 pb-md-4">
-            <!--from header-->
-            <header class="pt-xs-2 pb-xs-2 bb-xs-1 dao-background-white">
-                <h2>Table Example</h2>
-                <p class="dao-text-gray-light">sub header</p>
-            </header>
-            <div class="dao-table-warpper">
-                <table class="dao-table mt-md-4">
-                    <thead>
-                        <tr>
-                            <th>Col-1</th>
-                            <th>Col-2</th>
-                            <th>Col-3</th>
-                            <th>Col-4</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="">
-                                text1
-                            </td>
-                            <td class="">
-                                text2
-                            </td>
-                            <td class="">
-                                text3
-                            </td>
-                            <td class="">
-                                text4
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="">
-                                text1
-                            </td>
-                            <td class="">
-                                text2
-                            </td>
-                            <td class="">
-                                text3
-                            </td>
-                            <td class="">
-                                text4
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="dao-table-pages mt-md-2">
-                    <div class="">
-                        <a href="javascript:;" class="dao-table-pages-item dao-table-pages-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            1
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            2
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            <i class="fas fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="dao-panel p-xs-4 pl-md-6 pt-md-5 pr-md-6 pb-md-4">
-            <!--from header-->
-            <header class="pt-xs-2 pb-xs-2 bb-xs-1 dao-background-white">
-                <h2>Table Example</h2>
-                <p class="dao-text-gray-light">sub header</p>
-            </header>
-            <div class="dao-table-warpper">
-                <table class="dao-table mt-md-4">
-                    <thead>
-                    <tr>
-                        <th>Col-1</th>
-                        <th>Col-2</th>
-                        <th>Col-3</th>
-                        <th>Col-4</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="">
-                            text1
-                        </td>
-                        <td class="">
-                            text2
-                        </td>
-                        <td class="">
-                            text3
-                        </td>
-                        <td class="">
-                            text4
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="">
-                            text1
-                        </td>
-                        <td class="">
-                            text2
-                        </td>
-                        <td class="">
-                            text3
-                        </td>
-                        <td class="">
-                            text4
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="dao-table-pages mt-md-2">
-                    <div class="">
-                        <a href="javascript:;" class="dao-table-pages-item dao-table-pages-prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            1
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            2
-                        </a>
-                        <a href="javascript:;" class="dao-table-pages-item">
-                            <i class="fas fa-angle-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <div class="dao-body">
+        <div id="routerView" data-animationName="slide">
+        <!--<dao-panel title="Pre Order">
+            <dao-input title="Name"></dao-input>
+            <dao-input title="PO Number"></dao-input>
+            <dao-input title="Create Date"></dao-input>
+            <dao-input title="Creator"></dao-input>
+            <dao-input title="Vendor"></dao-input>
+            <dao-input title="Note"></dao-input>
+        </dao-panel>-->
         </div>
     </div>
 </div>
@@ -394,5 +58,11 @@
 
 </body>
 </html>
+<script src="src/js/cache/ChasePayCache.js"></script>
+<script src="src/js/dataservice/ChasePayDataConstants.js"></script>
+<script src="src/js/dataservice/ChasePayNavDataService.js"></script>
+<script src="src/js/dataservice/ChasePayDataService.js"></script>
+
 <script src="src/js/DaoUI.js"></script>
-<script src="src/index.js"></script>
+<script src="src/js/router/route.js"></script>
+<script src="src/js/app.js"></script>

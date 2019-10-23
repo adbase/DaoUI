@@ -858,24 +858,26 @@ body{
 
 /*admin-layout*/
 .dao-layout-admin .dao-header{
-    background-color: #23262E;
+    /*background-color: #23262E;*/
+    border-bottom: 1px solid #E1E3DF;
+    height: 60px;
+    z-index:100;
 }
 .dao-layout-admin .dao-side{
     top: 60px;
     width: 200px;
     overflow-x: hidden;
+    border-right: 1px solid #E1E3DF;
 }
 .dao-layout-admin .dao-body{
     position: fixed;
     left: 200px;
     right: 0;
     top: 60px;
-    bottom: 44px;
     z-index: 998;
     width: auto;
     overflow-y: auto;
     box-sizing: border-box;
-    padding: 15px;
 }
 .dao-layout-admin .dao-main{
     width: auto;
@@ -913,6 +915,294 @@ body{
     right: 0; top: 0;
 }
 
+/**
+pages
+ */
+.page {
+    display: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /*background-color: #fff;*/
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.page.stacked {
+    display: none;
+}
+
+.page-previous {
+    pointer-events: none;
+}
+
+.current {
+    display: block;
+}
+.dao-page-view{
+    width: 100%;
+}
+.dao-page-heading{
+    width: 100%;
+}
+.dao-page-body{
+    padding: 15px;
+}
+.dao-page-footer{
+
+}
+
+
+/* fade */
+
+.enter-fade,
+.leave-fade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.enter-fade {
+    display: block;
+    z-index: 2;
+    animation: fadeIn .4s ease-in-out;
+}
+
+.leave-fade {
+    display: block;
+    z-index: 2;
+    animation: fadeOut .4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* slide */
+
+.enter-slide,
+.leave-slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.enter-slide {
+    display: block;
+    z-index: 3;
+    animation: slideIn .4s forwards;
+}
+
+.enter-slide:before {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+    opacity: 0;
+    right: 100%;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(10%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0.01)), to(rgba(0, 0, 0, 0.3)));
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.3) 100%);
+    -webkit-animation: slideInShadow .4s forwards;
+    animation: slideInShadow .4s forwards;
+}
+
+.leave-slide-previous {
+    display: block;
+    z-index: 2;
+    animation: slideOutPrevious .3s forwards;
+}
+
+.leave-slide-previous:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    bottom: 0;
+    content: '';
+    opacity: 0;
+    z-index: 2;
+    -webkit-animation: slideOutPreviousOpacity .3s forwards;
+    animation: slideOutPreviousOpacity .3s forwards;
+}
+
+
+/* leave */
+
+.leave-slide {
+    display: block;
+    z-index: 2;
+    animation: slideOut .3s forwards;
+}
+
+.leave-slide:before {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+    opacity: 0;
+    right: 100%;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(10%, rgba(0, 0, 0, 0)), color-stop(50%, rgba(0, 0, 0, 0.01)), to(rgba(0, 0, 0, 0.3)));
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.01) 50%, rgba(0, 0, 0, 0.3) 100%);
+    -webkit-animation: slideOutShadow .3s forwards;
+    animation: slideOutShadow .3s forwards;
+}
+
+.enter-slide-current {
+    display: block;
+    z-index: 2;
+    animation: slideInCurrent .3s forwards;
+}
+
+.enter-slide-current:after {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    bottom: 0;
+    content: '';
+    opacity: 0;
+    z-index: 3;
+    -webkit-animation: slideInCurrentOpacity .4s forwards;
+    animation: slideInCurrentOpacity .4s forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate3d(100%, 0, 0);
+        opacity: 0.5;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutShadow {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes slideOutShadow {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideInShadow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes slideInShadow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes slideOutPreviousOpacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes slideOutPrevious {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-30%, 0, 0);
+    }
+}
+
+@keyframes slideInCurrent {
+    from {
+        transform: translate3d(-30%, 0, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slideInCurrentOpacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes slideInCurrentOpacity {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 /*grid*/
 .dao-row{
     margin-bottom: 10px;
@@ -936,23 +1226,28 @@ body{
 /** button **/
 
 .dao-btn {
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-    display: inline-block;
-    font-family: inherit;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 32px;
+    height: 39px;
+    border-radius: 2px;
     font-size: 14px;
-    font-weight: bold;
-    height: 38px;
-    line-height: 1.4;
-    padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    cursor: pointer;
 }
+.dao-btn-primary{
+    background: #00a1d6;
+    color:#FFFFFF;
+}
+.dao-btn-primary:hover{
+    background: #00bdf3;
+}
+
 .dao-btn-secondary{
     background-color: #FFF;
     border-color: rgba(0, 0, 0, 0.15);
@@ -1010,6 +1305,7 @@ body{
 
 .dao-input-group{
     display: table;
+    width:100%;
 }
 .dao-input-group-body{
     display: table-cell;
@@ -1018,6 +1314,7 @@ body{
 }
 
 .dao-input-group-body .dao-input{
+    width:100%;
     border-bottom-right-radius: 0px;
     border-top-right-radius: 0px;
 }
@@ -1093,7 +1390,7 @@ body{
 }
 .dao-tag-left .dao-tag-body {
     border-bottom-right-radius: 3px;
-    border-top-right-radius: 3p qx;
+    border-top-right-radius: 3px;
     border-width: 1px 1px 1px 0;
 }
 /* nav */
@@ -1105,7 +1402,7 @@ body{
 .dao-nav .dao-this:after,
 .dao-nav-tree .dao-nav-itemed:after{position: absolute; left: 0; top: 0; width: 0; height: 5px; background-color: #bfbfbf; transition: all .2s; -webkit-transition: all .2s;}
 .dao-nav-bar{z-index: 1000;}
-.dao-nav .dao-this a,.dao-nav .dao-nav-item a:hover{color: #222222;background-color:#e1e3df}
+.dao-nav .dao-this a,.dao-nav .dao-nav-item a:hover{background-color: #4E5465; color: #ffffff}
 .dao-nav .dao-this:after{content: ''; top: auto; bottom: 0; width: 100%;}
 .dao-nav-img{width: 30px; height: 30px; margin-right: 10px; border-radius: 50%;}
 
@@ -1132,8 +1429,8 @@ body{
 .dao-nav-tree .dao-this,
 .dao-nav-tree .dao-this>a,
 .dao-nav-tree .dao-this>a:hover,
-.dao-nav-tree .dao-nav-child dd.dao-this,
-.dao-nav-tree .dao-nav-child dd.dao-this a{background-color: #009688; color: #fff;}
+.dao-nav-tree .dao-nav-child ul.dao-this,
+.dao-nav-tree .dao-nav-child ul.dao-this a{background-color: #009688; color: #fff;}
 .dao-nav-tree .dao-this:after{display: none;}
 .dao-nav-tree .dao-nav-title a,
 .dao-nav-tree .dao-nav-title a:hover,
@@ -1150,7 +1447,7 @@ body{
 .dao-nav-itemed>.dao-nav-child{display: block; padding: 0; background-color: rgba(242, 242, 242, 0.3) !important;}
 .dao-nav-itemed>.dao-nav-child>.dao-this>.dao-nav-child{display: block;}
 
-/* 侧边 */.dao-nav-side{position: fixed; top: 0; bottom: 0; left: 0; overflow-x: hidden; z-index: 999;}
+/* 侧边 */.dao-nav-side{position: fixed; top: 0; bottom: 0; left: 0; overflow-x: hidden; z-index: 50;}
 
 /* 导航主题色 */.dao-bg-blue .dao-nav-bar,
            .dao-bg-blue .dao-this:after,
@@ -1286,8 +1583,11 @@ body{
 
 .dao-card-text-item{
     color: #595959;
-    display: inline;
-    position: relative;
+    font-size: 12px;
+    margin-bottom: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
