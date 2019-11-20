@@ -4,10 +4,9 @@
  */
 
 const DaoSelectImpl = data => `
-<div class="dao-select-warper">
+<div class="dao-select-warper" style="width : ${data.width}">
     <div class="dao-input-group">
         <select class="dao-select dao-select-custom  dao-width-full">
-            <option value="">${data.primary}</option>
             ${data.optionHtml}
         </select>
     </div>
@@ -17,20 +16,35 @@ const DaoSelectImpl = data => `
 </div>
 `;
 
-class DaoSelect extends HTMLElement{
+class DaoSelect extends DaoModule{
     constructor() {
         super();
         this._width = this.getAttribute('width');
         this._primary = this.getAttribute('primary');
-        this._HTML = this.innerHTML;
+        //console.log("select : " + this.getAttribute("data"));
+        this._options = JSON.parse(this.getAttribute("data"));
         this._render();
     }
 
+    getOptions(data,primary ){
+        let html = "<optgroup>";
+        if(primary !== null) {
+            html += "<option value='"+primary+"'>"+ data[primary]+"</option>";
+        }
+        for(let key in data) {
+            //console.log(key, data[key]);
+            html +="<option value = '"+ key +"'>"+data[key]+"</option>";
+        }
+        html+="</optgroup>";
+        return html;
+    }
     _render(){
         let data ={};
         data.width = this._width;
         data.primary = this._primary;
-        data.optionHtml = this._HTML;
+        data.optionHtml = this.getOptions(this._options, this._primary);
+        data.width = this.getAttribute("width");
+        //console.log(DaoSelectImpl(data));
         this.innerHTML = DaoSelectImpl(data);
     }
 }

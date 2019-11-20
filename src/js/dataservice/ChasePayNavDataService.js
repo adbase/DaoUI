@@ -1,5 +1,5 @@
 var ChasePayNavDataService = class ChasePayNavDataService{
-	
+
 	// get  nav data
 	getNavData(input)
 	{
@@ -15,48 +15,32 @@ var ChasePayNavDataService = class ChasePayNavDataService{
                         {
                             name:"首页",
                             url:"/home",
+                            icon:"",
                         },
                         {
-                            name:"所有商品",
-                            url:"/",
-                            sub: [
-                                 {
-                                    name:"发布商品",
-                                    url:"/createsku",
-                                 },
-                                 {
-                                    name:"商品列表",
-                                    url:"/listing",
-                                 }
-                                 ]
+                            name:"商品管理",
+                            url:"/listing",
+                            icon:"",
                         },
                         {
-                            name:"进货订单",
-                            url:"/",
-                            sub:[
-                                {
-                                    name:"新建订单",
-                                    url:"/createpo",
-                                },
-                                {
-                                    name:"订单列表",
-                                    url:"/preorder",
-                                }
-                                ]
+                            name:"采购",
+                            url:"/purchase",
+                            icon:"",
+                        },
+                        {
+                            name:"库存",
+                            url:"/stock",
+                            icon:"",
+                        },
+                        {
+                            name:"销售",
+                            url:"/sell",
+                            icon:"",
                         },
                         {
                             name:"设置",
-                            url:"/",
-                            sub:[
-                                {
-                                    name:"权限设置",
-                                    url:"/settingpv",
-                                },
-                                {
-                                    name:"员工管理",
-                                    url:"/settinguser",
-                                }
-                            ]
+                            url:"/settings",
+                            icon:"",
                         }
                         ];
 			chasepayCache(CACHE_KEY_NAV_DATA,navdata);

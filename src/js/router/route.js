@@ -124,7 +124,6 @@
 
             // 初始化跳转方法
             window.linkTo = function(path) {
-                //console.log('path :', path);
                 if (path.indexOf("?") !== -1) {
                     window.location.hash = path + '&key=' + util.genKey();
                 } else {
@@ -139,7 +138,7 @@
 
             //路由切换
             window.addEventListener('hashchange', function(event) {
-                // console.log('hashchange', event);
+
                 self.historyChange(event)
             }, false)
 
@@ -249,6 +248,7 @@
         //路由处理
         urlChange: function() {
             var currentHash = util.getParamsUrl();
+            //console.log("currentHash : "+JSON.stringify(currentHash));
             if (this.routes[currentHash.path]) {
                 var self = this;
                 if (this.beforeFun) {

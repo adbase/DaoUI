@@ -1,41 +1,80 @@
 /**
  * 输入框
  * 09/16/2019
+ * config
+ * {
+ *      type:"email","password","text"
+ *      dataLength:10
+ *      data-error:
+ *      data-success:
+ *      value:""
+ *      title:""
+ *      placeholder:""
+ *      id:""
+ *      icon:""
+ * }
  */
 
-const DaoInputImpl = data => `
-<div class="row">
-    <div class="col-sm-4 col-xl-3 col-tv-2">
-        <label class="dao-text-strong">
-            ${data.title}
-        </label>
-        <p class="dao-text-small dao-text-gray-light">
-            ${data.subTitle}
-        </p>
-    </div>
-    <div class="col-sm-8 col-xl-9 col-tv-10">
-        <input class="dao-input" placeholder = "${data.placeholder}" size="10" style="width : ${data.width}"/>
-    </div>
-</div>
-`;
 
-class DaoInput extends HTMLElement{
+
+class DaoInput extends DaoModule{
     constructor() {
         super();
-        this._title = this.getAttribute('title');
-        this._subTitle = this.getAttribute('subTitle');
-        this._width = this.getAttribute('width');
-        this._placeholder = this.getAttribute('placeholder');
         this._render();
+        this.evetns();
     }
 
-    _render(){
-        let data = {};
-        data.title = this._title;
-        data.subTitle = this._subTitle;
-        data.width = this._width;
-        data.placeholder = this._placeholder;
-        this.innerHTML = DaoInputImpl(data);
+    evetns(){
+        $(document).ready(function() {
+            Materialize.updateTextFields();
+        });
     }
+    _render(){
+        let html = "";
+        html += "<div class='input-field'>";
+
+        //0.icon
+        if(this.config.icon){
+            html += "<i class='material-icons prefix'>"+this.config.icon+"</i>"
+        }
+        html += "<input class = 'validate'";
+
+        //1. id
+        if(this.config.id){
+            html += "id = '" + this.config.id + "'";
+        }
+
+        //2. type
+        if(this.config.type){
+            html += "type = '" + this.config.type + "'";
+        }else{
+            //default is text input.
+            html += "type = 'text'";
+        }
+        //3.value
+        if(this.config.value){
+            html += "value = '" + this.config.value +"'";
+        }
+
+        //4.placeholder
+        if(this.config.placeholder){
+            html += "placeholder = '" + this.config.placeholder +"'";
+        }
+
+        //5.data-length
+        if(this.config.dataLength){
+            html += "data-length = '" + this.config.dataLength +"'";
+        }
+
+        html += "/>";
+        //6. title
+        if(this.config.id && this.config.title){
+            html += " <label for='"+this.config.id+"'>"+this.config.title+"</label>";
+        }
+        html += "</div>";
+        this.innerHTML = html;
+    }
+
+
 }
 window.customElements.define('dao-input', DaoInput);

@@ -29,6 +29,28 @@ class ChasepayAppUtil {
             return null;
     }
 }
+const ChasePayClassFactory = (function()
+{
+    let MAP_CLASS;
+    let _init=function()
+    {
+        MAP_CLASS = new Map();
+    };
+
+    let _register=function(key, className)
+    {
+        MAP_CLASS.set(key, className);
+    };
+    let _create=function(name)
+    {
+        return MAP_CLASS.get(name);
+    };
+    return {
+        init: _init,
+        create : _create,
+        register : _register,
+    };
+})();
 !(function(window, document, undefined){
     'user strick';
     window.ChasepayApp = {};
@@ -46,6 +68,7 @@ class ChasepayAppUtil {
 
     ChasepayApp.init = function(){
         let until = new ChasepayAppUtil(document);
+        ChasePayClassFactory.init();
         //1.router
         let routerconfig1 = ChasepayApp._getCacheData("key_nav_data");
 
@@ -57,14 +80,14 @@ class ChasepayAppUtil {
                     let pageclass= routerconfig1[i].sub[j].url.substring(1);
                     let pageDatahash = routerconfig1[i].sub[j].url;
                     routerHtml += '<div class="page" data-hash="'+pageDatahash+'">';
-                    routerHtml += '<div id = "'+pageclass +'"></div></div>';
+                    routerHtml += '<div class="dao-height-full" id = "'+pageclass +'"></div></div>';
                 }
 
             }else{
                 let pageclass= routerconfig1[i].url.substring(1);
                 let pageDatahash = routerconfig1[i].url;
                 routerHtml += '<div class="page" data-hash="'+pageDatahash+'">';
-                routerHtml += '<div id = "'+pageclass +'"></div></div>';
+                routerHtml += '<div class="dao-height-full" id = "'+pageclass +'"></div></div>';
             }
         }
         document.getElementById("routerView").innerHTML = routerHtml;
@@ -84,11 +107,11 @@ class ChasepayAppUtil {
                     let newRouter = {};
                     newRouter.path = routerconfig1[i].sub[j].url;
                     newRouter.name = routerconfig1[i].sub[j].url.substring(1);
-                    // console.log(newRouter.name);
+                    console.log(newRouter.name);
                     newRouter.callback = function(route){
+                        //console.log("router callback 1: " );
                         let url = "./src/js/page/"+ route.path.substring(1)+"/"+ route.path.substring(1)+".js";
-                        let myObj = eval(until.ajaxGet(url));
-                        //new myObj();
+                        eval(until.ajaxGet(url));
                     };
                     routerconfig.routes.push(newRouter);
                 }
@@ -98,10 +121,10 @@ class ChasepayAppUtil {
                 newRouter.path = routerconfig1[i].url;
                 newRouter.name = routerconfig1[i].url.substring(1);
                 newRouter.callback = function(route){
+                    //console.log("router callback 2: " + newRouter.path );
                     let url = "./src/js/page/"+ route.path.substring(1)+"/"+ route.path.substring(1)+".js";
-                    let myObj = eval(until.ajaxGet(url));
-                    //console.log("est");
-                    //new myObj();
+                    //console.log("router callback 2: " + url );
+                    eval(until.ajaxGet(url));
                 };
                 routerconfig.routes.push(newRouter);
             }
@@ -119,10 +142,6 @@ class ChasepayAppUtil {
 
         //2. import base js
         /*加载文件*/
-        let util = new Util();
-        let pagejs = './src/js/page/page.js';
-        util.getJS(pagejs);
-
     };
 
     window.onload = ChasepayApp.init();

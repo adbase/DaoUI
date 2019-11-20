@@ -1,12 +1,17 @@
-class Page {
+class Page extends HTMLElement{
     constructor() {
-
+        super();
+        //console.log(this.getAttribute("config"));
+        this.config = JSON.parse(this.getAttribute("config"));
     }
     _getData(data){
         let key ;
-        try{key = eval(data);}
+        try{
+            key = JSON.parse(data);
+        }
         catch(e)
         {
+            console.log("eval data error : " + data);
         }
         return ChasePayDataService.get(key);
     }
@@ -20,6 +25,12 @@ class Page {
         }else
             return null;
     }
+    paserUI(type, config){
+        let html = "";
+        html += "<" + type + " config ='" + JSON.stringify(config) +"' />";
+        return html;
+    }
+
     render(){
 
     }

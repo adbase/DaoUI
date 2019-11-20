@@ -1,7 +1,0 @@
-const Pagefactory = class  {
-    constructor(){
-
-    }
-
-
-};

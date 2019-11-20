@@ -4,13 +4,15 @@ var ChasePayDataService = (function(){
 	{
 		//let f = eval(key);
         //let a = f();
-        //return a;	
+        //return a;
+
 		let className = input.className;
 		let methodName = input.methodName;
-		let condtioMap = input.condtioMap;
+		let condtionMap = input.condtionMap;
 		let classObject = eval(className);
         let myClass = new classObject();
-		let data = myClass[methodName](condtioMap);
+        console.log("ChasePayDataService : " +input.methodName);
+		let data = myClass[methodName](condtionMap);
         return data;	
 	}
 	

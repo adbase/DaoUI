@@ -84,16 +84,20 @@ class Util {
             // 给父元素添加事件
             element.addEventListener(event,function(e){
                 // 获取当前触发的元素
-                var target = e.target;
+                let target = e.target;
                 // 判断当前元素是否是我需要的
-                if(target.nodeName.toLowerCase()===tag){
-                    listener(target);
+                while(target !== element ) {
+                    if (target.nodeName.toLowerCase() === tag || target.getAttribute("id") === tag || target.getAttribute("data-event") === tag) {
+                        listener(target);
+                        break;
+                    }
+                    target = target.parentNode;
                 }
             })
         }else{
             // 兼容IE
             element.attachEvent("on"+event,function(){
-                var target = window.event.srcElement;
+                let target = window.event.srcElement;
                 if(target.nodeName.toLowerCase()===tag){
                     listener(target);
                 }
@@ -103,11 +107,14 @@ class Util {
 
     }
 
-    getData(data){
+    getCacheData(data){
         let key ;
-        try{key = eval(data);}
+        try{
+            key = JSON.parse(data);
+        }
         catch(e)
         {
+            console.log("eval data error : " + data);
         }
         return ChasePayDataService.get(key);
     }
@@ -156,7 +163,6 @@ class Util {
             }
         }
     }
-
 }
 
 function DataBinder( object_id ) {
@@ -252,25 +258,32 @@ const DBind = function( uid ) {
     /*加载文件*/
     let modulefolder = 'modules', path = util.path();
     let  daoModule = path + modulefolder +'/dao-module.js'
+        ,daoModal = path + modulefolder +'/modal/dao-modal.js'
         ,daoInput = path + modulefolder +'/input/dao-input.js'
-        ,daoSelect = path + modulefolder +'/select/dao-select.js'
-        ,daoPanel = path + modulefolder +'/panel/dao-panel.js'
-        ,daoNav = path + modulefolder +'/nav/dao-nav.js'
-        ,daoLargeButton = path + modulefolder + '/button/dao-button-large.js'
-        ,daoCardList = path + modulefolder + '/card/dao-card-list.js';
+        ,daoBreadcrumbs = path + modulefolder +'/breadcrumbs/dao-breadcrumbs.js'
+        ,daoUIPanel = path + modulefolder +'/panel/dao-ui-panel.js'
+        ,daoNavBar =  path + modulefolder +'/nav/dao-nav-bar.js'
+        ,daoUIButtonGroup = path + modulefolder + '/button/dao-ui-button-group.js'
+        ,daoCard = path + modulefolder + '/card/dao-card.js'
+        ,daoUIButton = path + modulefolder +'/button/dao-ui-button.js'
+        ;
 
     util.getJS(daoModule).then(function(msg){
+        return util.getJS(daoModal);
+    }).then(function(msg){
         return util.getJS(daoInput);
     }).then(function(msg){
-        return util.getJS(daoSelect);
+        return util.getJS(daoBreadcrumbs);
     }).then(function(msg){
-        return util.getJS(daoPanel);
+        return util.getJS(daoUIPanel);
     }).then(function(msg){
-        return util.getJS(daoNav);
+        return util.getJS(daoUIButtonGroup);
     }).then(function(msg){
-        return util.getJS(daoLargeButton);
+        return util.getJS(daoCard);
     }).then(function(msg){
-        return util.getJS(daoCardList);
+        return util.getJS(daoUIButton);
+    }).then(function(msg){
+        return util.getJS(daoNavBar);
     });
 }(window);
 

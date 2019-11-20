@@ -1,27 +1,29 @@
 class DaoCardList extends DaoModule{
     constructor() {
         super();
-        this._data = this._getData(this.getAttribute("data"));
-        //console.log(this._data);
+        console.log(" dao card list : "+this.getAttribute("data"));
+        let dataAttr = this.getAttribute("data");
+        if(dataAttr.className){
+            this._data = this._getData();
+        }else{
+            this._data = JSON.parse(dataAttr);
+        }
+
         this._id = this.getAttribute("id");
         this._render();
     }
-
     _getCardItem(data){
-       //console.log(data);
-        let _html = '<li class="dao-cards-item" id="'+this._id+"_"+data.id+'">';
+
+        let _html = '<li class="dao-cards-item" id="'+data.id+'">';
         _html += '<div class="dao-card">';
         _html += '<div class="dao-card-content">';
+        _html += '<div class="dao-card-title"><div class="row"><div class="col-md-9"><p class="p-md-3">'+ data.title +'</p></div></div></div>';
         if(data.img === undefined || data.img === ""){
-            _html += '<div class="dao-card-image"><div class="dao-card-image-default"></div></div>';
+            _html += '<div class="dao-card-image "><div class="dao-card-image-default dao-height-full"></div></div>';
         }else{
             _html += '<div class="dao-card-image"><img src="'+ data.img+'"></div>';
         }
-        _html += '<div class="dao-card-title">'+ data.title +'</div>';
         _html += '<div class="dao-card-text">';
-
-
-
         for(let i = 0; i<data.cardItemText.length; i++) {
             _html += '<div class="dao-card-text-item">' +  data.cardItemText[i] + '</div>';
         }
@@ -32,6 +34,7 @@ class DaoCardList extends DaoModule{
     _render(){
         let _html = "";
         _html += '<ul class="dao-cards dao-width-full" id="'+this._id +'">';
+        _html += '<li class="dao-cards-item" id="newItem"><div class="dao-card dao-card-new"><i class="fas fa-plus"></i></div></li>';
         for (let i = 0; i < this._data.length; i++) {
             let cardItem = this._data[i];
 
